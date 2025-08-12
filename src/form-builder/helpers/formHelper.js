@@ -1,6 +1,7 @@
 import get from 'lodash/get';
 import filter from 'lodash/filter';
 import { formBuilderConstants } from 'form-builder/constants';
+import ReactHtmlParser from 'react-html-parser';
 
 export default class FormHelper {
   static getFormResourceControls(formData) {
@@ -24,7 +25,7 @@ export default class FormHelper {
     if (control.type === 'obsControl' && control.concept !== undefined) {
       obsControlEvents = obsControlEvents.concat({
         id: control.id, name: control.concept.name,
-        events: control.events,
+        events: ReactHtmlParser(control.events, {decodeEntities: false}),
       });
     } else if (control.controls !== undefined) {
       const childControls = control.controls;
@@ -37,7 +38,7 @@ export default class FormHelper {
         }
       });
       obsControlEvents = obsControlEvents.concat(obsControls.map(ctrl =>
-        ({ id: ctrl.id, name: ctrl.concept.name, events: ctrl.events })));
+        ({ id: ctrl.id, name: ctrl.concept.name, events: ReactHtmlParser(ctrl.events, {decodeEntities: false}) })));
     }
     return obsControlEvents;
   }
