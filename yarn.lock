@@ -1102,7 +1102,7 @@ backo2@1.0.2:
 
 "bahmni-form-controls@git+https://github.com/IPLit/form-controls.git#master":
   version "0.93.22"
-  resolved "git+https://github.com/IPLit/form-controls.git#775172e11e4ae82ce0663bcd9ef7cf819a4aed68"
+  resolved "git+https://github.com/IPLit/form-controls.git#9f9b10d27c0b1cebe3928a0fb12b82a6a39259d6"
   dependencies:
     base64-inline-loader "^1.1.0"
     classnames "^2.2.5"
