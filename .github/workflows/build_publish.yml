@@ -49,7 +49,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: package/docker/Dockerfile
           push: true
-          tags: bahmni/implementer-interface:${{env.ARTIFACT_VERSION}},bahmni/implementer-interface:latest
+          tags: infoiplitin/implementer-interface:${{env.ARTIFACT_VERSION}},infoiplitin/implementer-interface:latest
       
       - name: Helm - Update Version and Image Tag
         run: |
@@ -70,7 +70,7 @@ jobs:
         run: mkdir -p helm-charts/implementer-interface/ && cp implementer-interface-${{ env.ARTIFACT_VERSION }}.tgz helm-charts/implementer-interface/
       - name: Helm - reIndex
         working-directory: helm-charts/
-        run: helm repo index --merge index.yaml --url https://bahmni.github.io/helm-charts/  .
+        run: helm repo index --merge index.yaml --url https://iplit.github.io/helm-charts/  .
       - name: Helm - Publish Chart
         working-directory: helm-charts/
         run: |
@@ -78,4 +78,4 @@ jobs:
           git config user.email ${{ secrets.BAHMNI_EMAIL}}
           git add .
           git commit -m "Release of implementer-interface-${{ env.ARTIFACT_VERSION }}"
-          git push 'https://${{ secrets.BAHMNI_USERNAME}}:${{ secrets.BAHMNI_PAT}}@github.com/bahmni/helm-charts.git' gh-pages
+          git push 'https://${{ secrets.BAHMNI_USERNAME}}:${{ secrets.BAHMNI_PAT}}@github.com/iplit/helm-charts.git' gh-pages
