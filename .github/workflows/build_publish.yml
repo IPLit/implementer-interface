@@ -62,7 +62,7 @@ jobs:
       - name: Helm - Checkout Charts Repository
         uses: actions/checkout@v2
         with:
-          repository: Bahmni/helm-charts
+          repository: IPLit/helm-charts
           ref: gh-pages
           path: helm-charts
           persist-credentials: false
